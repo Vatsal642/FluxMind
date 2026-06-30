@@ -1,3 +1,4 @@
+import { Credentials } from 'google-auth-library';
 import { google } from 'googleapis';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -23,7 +24,7 @@ export function getAuthUrl() {
   });
 }
 
-export async function getTokens(code: string) {
+export async function getTokens(code: string): Promise<Credentials> {
   const { tokens } = await oauth2Client.getToken(code);
   return tokens;
 }
